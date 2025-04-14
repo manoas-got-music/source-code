@@ -1,47 +1,70 @@
 'use client';
 
 import { useState } from 'react';
-import { Col, Container, Image, Row, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import AppNavbar from '../components/Navbar';
 import UserProfile from '../components/UserProfile';
+import BrowseMusicians from '../components/BrowseMusicians';
 
 const mockUser = {
-  name: "Travis Thompson",
-  profilePic: "/test.png", 
-  instrument: "Guitar, Vocals",
-  genres: ["Jazz", "Funk", "Neo-Soul"],
-  goals: "Looking to casually jam and maybe join a student band",
-  bio: "Third-year music major. Into improv, grooves, and late-night sessions.",
-  youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  soundcloud: "https://soundcloud.com/fakeuser123",
+  name: 'Travis Thompson',
+  profilePic: '/test.png',
+  instrument: 'Guitar, Vocals',
+  genres: ['Jazz', 'Funk', 'Neo-Soul'],
+  goals: 'Looking to casually jam and maybe join a student band',
+  bio: 'Third-year music major. Into improv, grooves, and late-night sessions.',
+  youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  soundcloud: 'https://soundcloud.com/fakeuser123',
 };
 
-/** The Home page. */
 const Home = () => {
+  const [view, setView] = useState<'home' | 'browse' | 'events' | 'logout'>('home');
   const [showProfile, setShowProfile] = useState(false);
 
   return (
     <main>
+      <AppNavbar onSelect={(key) => setView(key as any)} />
+
       <Container id="landing-page" fluid className="py-3">
-        <Row className="align-middle text-center">
-          <Col xs={4}>
-            <Image src="next.svg" width="150px" alt="" />
-          </Col>
+        {view === 'home' && (
+          <>
+            <Row className="align-middle text-center">
+              <Col xs={4}>
+                <Image src="/next.svg" width="150px" alt="Next.js Logo" />
+              </Col>
 
-          <Col xs={8} className="d-flex flex-column justify-content-center">
-            <h1>Welcome to this template</h1>
-            <p>Now get to work and modify this app!</p>
-            <Button variant="primary" onClick={() => setShowProfile(!showProfile)}>
-              {showProfile ? 'Hide' : 'Show'}
-              {' '}
-              Profile
-            </Button>
-          </Col>
-        </Row>
+              <Col xs={8} className="d-flex flex-column justify-content-center">
+                <h2>Welcome to Manoa’s Got Music 🎶</h2>
+                <p>Click below to preview a featured musician profile.</p>
+                <Button variant="primary" onClick={() => setShowProfile(!showProfile)}>
+                  {showProfile ? 'Hide' : 'Show'}
+                  Profile
+                </Button>
+              </Col>
+            </Row>
 
-        {showProfile && (
-          <Row className="mt-5">
+            {showProfile && (
+              <Row className="mt-5">
+                <Col>
+                  <UserProfile user={mockUser} />
+                </Col>
+              </Row>
+            )}
+          </>
+        )}
+
+        {view === 'browse' && (
+          <Row>
             <Col>
-              <UserProfile user={mockUser} />
+              <BrowseMusicians />
+            </Col>
+          </Row>
+        )}
+
+        {view === 'logout' && (
+          <Row>
+            <Col>
+              <h2>You&apos;ve been logged out.</h2>
             </Col>
           </Row>
         )}
