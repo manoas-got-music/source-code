@@ -9,8 +9,9 @@ const mockUsers = [
     profilePic: '/china-musician.png',
     instrument: 'Erhu, Piano',
     genres: ['Classical', 'Chinese Folk'],
-    goals: '想和其他学生一起尝试跨文化融合音乐。',
-    bio: '中央音乐学院交换生，热爱二胡与中国民乐，同时也弹钢琴。',
+    goals: 'Want to try cross-cultural fusion music with other students',
+    // eslint-disable-next-line max-len
+    bio: 'An exchange student at the Central Conservatory of Music, she loves the erhu and Chinese folk music, and also plays the piano.',
     youtube: 'https://www.youtube.com/watch?v=china-music-demo',
     soundcloud: 'https://soundcloud.com/lihua',
   },
