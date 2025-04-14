@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import AppNavbar from '../components/Navbar';
 import UserProfile from '../components/UserProfile';
 import BrowseMusicians from '../components/BrowseMusicians';
+import JamSessions from '../components/JamSessions';
+import AppNavbar from '../components/Navbar';
 
 const mockUser = {
   name: 'Travis Thompson',
@@ -18,13 +19,12 @@ const mockUser = {
 };
 
 const Home = () => {
-  const [view, setView] = useState<'home' | 'browse' | 'events' | 'logout'>('home');
+  const [view, setView] = useState<'home' | 'browse' | 'logout' | 'jam'>('home');
   const [showProfile, setShowProfile] = useState(false);
 
   return (
     <main>
-      <AppNavbar onSelect={(key) => setView(key as any)} />
-
+      <AppNavbar onSelect={(key: any) => setView(key as any)} currentView={view} />
       <Container id="landing-page" fluid className="py-3">
         {view === 'home' && (
           <>
@@ -32,7 +32,6 @@ const Home = () => {
               <Col xs={4}>
                 <Image src="/next.svg" width="150px" alt="Next.js Logo" />
               </Col>
-
               <Col xs={8} className="d-flex flex-column justify-content-center">
                 <h2>Welcome to Manoa’s Got Music 🎶</h2>
                 <p>Click below to preview a featured musician profile.</p>
@@ -57,6 +56,14 @@ const Home = () => {
           <Row>
             <Col>
               <BrowseMusicians />
+            </Col>
+          </Row>
+        )}
+
+        {view === 'jam' && (
+          <Row>
+            <Col>
+              <JamSessions />
             </Col>
           </Row>
         )}

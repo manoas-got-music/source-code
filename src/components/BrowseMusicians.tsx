@@ -11,8 +11,7 @@ const mockUsers = [
     genres: ['Classical', 'Chinese Folk'],
     goals: '想和其他学生一起尝试跨文化融合音乐。',
     bio: '中央音乐学院交换生，热爱二胡与中国民乐，同时也弹钢琴。',
-    // eslint-disable-next-line @typescript-eslint/quotes
-    youtube: "https://www.youtube.com/watch?v=china-music-demo",
+    youtube: 'https://www.youtube.com/watch?v=china-music-demo',
     soundcloud: 'https://soundcloud.com/lihua',
   },
   {
