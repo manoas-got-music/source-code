@@ -1,7 +1,8 @@
 'use client';
 
 import { Container, Row, Col } from 'react-bootstrap';
-import UserProfile from './UserProfile'; // 注意路径：因为它在 components 文件夹中
+
+import UserProfile from './UserProfile';
 
 const mockUsers = [
   {
