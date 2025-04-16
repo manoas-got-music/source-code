@@ -15,28 +15,33 @@ const NavBar: React.FC = () => {
   const pathName = usePathname();
   return (
     <Navbar className="green-background" expand="lg">
+<Navbar.Brand href="/">
+      <img
+        src="./Manoa-Logo.png"
+        width="200"
+        alt="Manoa Logo"
+      />
+</Navbar.Brand>
       <Container>
-        <Navbar.Brand href="/">Next.js Application Template</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser
               ? [
-                  <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Stuff
+                <Nav.Link id="Find-Jam-nav">
+                Find Jam Sessions
+                </Nav.Link>,
+                  <Nav.Link id="Browse-Musicians-nav">
+                    Browse Musicians
                   </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                    List Stuff
+                  <Nav.Link id="edit-profile-nav">
+                  Edit Profile
+                  </Nav.Link>,
+                  <Nav.Link id="about-nav">
+                    About
                   </Nav.Link>,
                 ]
               : ''}
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
-                Admin
-              </Nav.Link>
-            ) : (
-              ''
-            )}
           </Nav>
           <Nav>
             {session ? (
