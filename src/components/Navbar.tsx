@@ -9,7 +9,6 @@ interface NavBarProps {
   currentView: 'home' | 'browse' | 'jam' | 'logout' | string;
 }
 
-// eslint-disable-next-line react/prop-types
 const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
@@ -17,42 +16,35 @@ const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
   const role = userWithRole?.randomKey;
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar className="green-background" expand="lg">
       <Container>
         <Navbar.Brand onClick={() => onSelect('home')} style={{ cursor: 'pointer' }}>
-          Manoa&apos;s Got Music
+          <img
+            src="./Manoa-Logo.png"
+            width="200"
+            alt="Manoa Logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            <Nav.Link
-              onClick={() => onSelect('home')}
-              className={currentView === 'home' ? 'active' : ''}
-            >
-              Home
+            <Nav.Link onClick={() => onSelect('jam')} active={currentView === 'jam'}>
+              Find Jam Sessions
             </Nav.Link>
-            <Nav.Link
-              onClick={() => onSelect('browse')}
-              className={currentView === 'browse' ? 'active' : ''}
-            >
+            <Nav.Link onClick={() => onSelect('browse')} active={currentView === 'browse'}>
               Browse Musicians
             </Nav.Link>
-            <Nav.Link
-              onClick={() => onSelect('jam')}
-              className={currentView === 'jam' ? 'active' : ''}
-            >
-              Jam Sessions
+            <Nav.Link onClick={() => onSelect('edit')} active={currentView === 'edit'}>
+              Edit Profile
+            </Nav.Link>
+            <Nav.Link onClick={() => onSelect('about')} active={currentView === 'about'}>
+              About
             </Nav.Link>
 
-            {currentUser && (
-              <>
-                <Nav.Link href="/add">Add Stuff</Nav.Link>
-                <Nav.Link href="/list">List Stuff</Nav.Link>
-              </>
-            )}
-
             {currentUser && role === 'ADMIN' && (
-              <Nav.Link href="/admin">Admin</Nav.Link>
+              <Nav.Link onClick={() => onSelect('admin')} active={currentView === 'admin'}>
+                Admin
+              </Nav.Link>
             )}
           </Nav>
 
@@ -60,23 +52,19 @@ const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
             {session ? (
               <NavDropdown id="login-dropdown" title={currentUser}>
                 <NavDropdown.Item href="/api/auth/signout">
-                  <BoxArrowRight />
-                  Sign Out
+                  <BoxArrowRight /> Sign Out
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/auth/change-password">
-                  <Lock />
-                  Change Password
+                  <Lock /> Change Password
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item href="/auth/signin">
-                  <PersonFill />
-                  Sign in
+                  <PersonFill /> Sign in
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/auth/signup">
-                  <PersonPlusFill />
-                  Sign up
+                  <PersonPlusFill /> Sign up
                 </NavDropdown.Item>
               </NavDropdown>
             )}
