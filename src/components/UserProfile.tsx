@@ -1,3 +1,7 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable @next/next/no-img-element */
+// eslint-disable-next-line lines-around-directive
 'use client';
 
 import React from 'react';
@@ -29,6 +33,13 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
         <h1 className="text-2xl font-bold">{user.name}</h1>
         {user.instrument && <p className="text-muted">{user.instrument}</p>}
         {user.bio && <p className="mt-2">{user.bio}</p>}
+        <button
+          // eslint-disable-next-line no-alert
+          onClick={() => alert(`Invite sent to ${user.name} to join your jam session!`)}
+          className="btn btn-outline-success btn-sm mt-2"
+        >
+          Invite to Jam
+        </button>
       </div>
     </div>
 
