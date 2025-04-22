@@ -36,6 +36,17 @@ const mockUsers = [
     youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     soundcloud: 'https://soundcloud.com/fakeuser123',
   },
+  {
+    name: 'Emily Park',
+    profilePic: '/emily-park.png',
+    instrument: 'Violin, Keyboard',
+    genres: ['Pop', 'Lo-fi', 'K-Classical'],
+    goals: 'Open to casual jam sessions and online collabs.',
+    bio: 'UH sophomore. Likes lo-fi vibes and playing string covers of K-pop.',
+    youtube: 'https://www.youtube.com/watch?v=emily-demo',
+    soundcloud: 'https://soundcloud.com/emilypark',
+  },
+
 ];
 
 export default function BrowseMusicians() {
