@@ -43,3 +43,14 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+
+model JamSession {
+  id        Int    @id @default(autoincrement())
+  title     String
+  date      String
+  time      String
+  location  String
+  genre     String
+  host      String
+}
+
