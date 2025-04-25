@@ -52,11 +52,11 @@ model Musician {
   image       String
   description String
   owner       String
-  jamSessions JamSessions[] @relation("MusicianJams")
+  jamSessions JamSession[]  @relation("MusicianJams")
 }
 
-model JamSessions {
-  id          Int      @id @default(autoincrement())
+model JamSession {
+  id          Int        @id @default(autoincrement())
   name        String
   startTime   String
   endTime     String
@@ -64,6 +64,5 @@ model JamSessions {
   genre       String
   description String
   organizer   String
-  musicianId  Int
-  musician    Musician @relation("MusicianJams", fields: [musicianId], references: [id])
+  musicians   Musician[] @relation("MusicianJams")
 }
