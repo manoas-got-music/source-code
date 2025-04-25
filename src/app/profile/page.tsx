@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import UserProfile from '../components/UserProfile';
+import UserProfile from '../../components/UserProfile';
 
 export default function ProfilePage() {
   const { data: session } = useSession();
