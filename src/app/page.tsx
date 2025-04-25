@@ -19,7 +19,7 @@ const mockUser = {
 };
 
 const Home = () => {
-  const [view, setView] = useState<'home' | 'browse' | 'logout' | 'jam'>('home');
+  const [view, setView] = useState<'home' | 'browse' | 'logout' | 'jam' | 'edit'>('home');
   const [showProfile, setShowProfile] = useState(false);
 
   return (
@@ -64,6 +64,15 @@ const Home = () => {
           <Row>
             <Col>
               <JamSessions />
+            </Col>
+          </Row>
+        )}
+
+        {view === 'edit' && (
+          <Row>
+            <Col>
+              <h2>Your Profile</h2>
+              <UserProfile user={mockUser} />
             </Col>
           </Row>
         )}
