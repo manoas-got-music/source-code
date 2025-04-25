@@ -39,7 +39,7 @@ const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
               Browse Musicians
             </Nav.Link>
             <Nav.Link onClick={() => onSelect('edit')} active={currentView === 'edit'}>
-              Edit Profile
+              Profile
             </Nav.Link>
             <Nav.Link onClick={() => onSelect('about')} active={currentView === 'about'}>
               About
