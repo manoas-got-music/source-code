@@ -6,6 +6,7 @@ import UserProfile from '../components/UserProfile';
 import BrowseMusicians from '../components/BrowseMusicians';
 import JamSessions from '../components/JamSessions';
 import AppNavbar from '../components/Navbar';
+import About from '../components/About';
 
 const mockUser = {
   name: 'Travis Thompson',
