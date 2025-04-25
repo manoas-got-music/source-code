@@ -47,19 +47,6 @@ model Stuff {
   owner     String
 }
 
-model JamSessions {
-  id          Int       @id @default(autoincrement())
-  name        String
-  startTime   String
-  endTime     String
-  date        String
-  genre       String
-  description String
-  organizer   String
-  Musician    Musician? @relation(fields: [musicianId], references: [id])
-  musicianId  Int?
-}
-
 model Musician {
   id          Int           @id @default(autoincrement())
   name        String
@@ -68,5 +55,17 @@ model Musician {
   image       String
   description String
   owner       String
-  jamSessions JamSessions[]
+  jamSessions JamSession[]  @relation("MusicianJams")
+}
+
+model JamSession {
+  id          Int        @id @default(autoincrement())
+  name        String
+  startTime   String
+  endTime     String
+  date        String
+  genre       String
+  description String
+  organizer   String
+  musicians   Musician[] @relation("MusicianJams")
 }
