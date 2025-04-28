@@ -10,7 +10,7 @@ import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap
 
 interface NavBarProps {
   onSelect: (key: string) => void;
-  currentView: 'home' | 'browse' | 'jam' | 'logout' | string;
+  currentView: 'home' | 'browse' | 'about' | 'jam' | 'logout' | string;
 }
 
 const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
