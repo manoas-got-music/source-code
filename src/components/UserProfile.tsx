@@ -22,9 +22,8 @@ export interface UserProfileProps {
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
   // eslint-disable-next-line react/jsx-no-comment-textnodes
   <div className="max-w-3xl mx-auto px-4 py-4 border rounded shadow-sm bg-white space-y-4">
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <div className="flex items-center gap-6">
-      // eslint-disable-next-line @next/next/no-img-element
+
       <img
         src={user.image || '/test.png'}
         alt={`${user.name}'s profile`}
@@ -46,17 +45,17 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => (
       </div>
     </div>
 
-    {user.genres && (
-      <div>
-        <h2 className="fw-semibold mb-2">Genres</h2>
-        <div className="d-flex flex-wrap gap-2">
-          {user.genres.split(',').map((genre) => (
-            <span key={genre.trim()} className="badge bg-primary bg-opacity-25 text-primary">
-              {genre.trim()}
-            </span>
-          ))}
-        </div>
+    {typeof user.genres === 'string' && (
+    <div>
+      <h2 className="fw-semibold mb-2">Genres</h2>
+      <div className="d-flex flex-wrap gap-2">
+        {user.genres.split(',').map((genre) => (
+          <span key={genre.trim()} className="badge bg-primary bg-opacity-25 text-primary">
+            {genre.trim()}
+          </span>
+        ))}
       </div>
+    </div>
     )}
 
     {user.owner && (
