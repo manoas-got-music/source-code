@@ -10,7 +10,7 @@ import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap
 
 interface NavBarProps {
   onSelect: (key: string) => void;
-  currentView: 'home' | 'browse' | 'jam' | 'logout' | string;
+  currentView: 'home' | 'browse' | 'about' | 'jam' | 'logout' | string;
 }
 
 const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
@@ -38,13 +38,12 @@ const AppNavbar: React.FC<NavBarProps> = ({ onSelect, currentView }) => {
             <Nav.Link onClick={() => onSelect('browse')} active={currentView === 'browse'}>
               Browse Musicians
             </Nav.Link>
-            <Nav.Link onClick={() => onSelect('edit')} active={currentView === 'edit'}>
-              Edit Profile
-            </Nav.Link>
             <Nav.Link onClick={() => onSelect('about')} active={currentView === 'about'}>
               About
             </Nav.Link>
-
+            <Nav.Link onClick={() => onSelect('edit')} active={currentView === 'edit'}>
+              Profile
+            </Nav.Link>
             {currentUser && role === 'ADMIN' && (
               <Nav.Link onClick={() => onSelect('admin')} active={currentView === 'admin'}>
                 Admin

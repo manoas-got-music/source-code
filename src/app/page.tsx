@@ -6,6 +6,7 @@ import UserProfile from '../components/UserProfile';
 import BrowseMusicians from '../components/BrowseMusicians';
 import JamSessions from '../components/JamSessions';
 import AppNavbar from '../components/Navbar';
+import About from '../components/About';
 
 const mockUser = {
   name: 'Travis Thompson',
@@ -19,7 +20,7 @@ const mockUser = {
 };
 
 const Home = () => {
-  const [view, setView] = useState<'home' | 'browse' | 'logout' | 'jam'>('home');
+  const [view, setView] = useState<'home' | 'browse' | 'about' | 'logout' | 'jam' | 'edit'>('home');
   const [showProfile, setShowProfile] = useState(false);
 
   return (
@@ -60,10 +61,27 @@ const Home = () => {
           </Row>
         )}
 
+        {view === 'about' && (
+          <Row>
+            <Col>
+              <About />
+            </Col>
+          </Row>
+        )}
+
         {view === 'jam' && (
           <Row>
             <Col>
               <JamSessions />
+            </Col>
+          </Row>
+        )}
+
+        {view === 'edit' && (
+          <Row>
+            <Col>
+              <h2>Your Profile</h2>
+              <UserProfile user={mockUser} />
             </Col>
           </Row>
         )}
